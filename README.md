@@ -4,7 +4,8 @@
 
 ## 프로젝트 흐름도
 
-![image](https://github.com/user-attachments/assets/2697bfbb-630b-4e5d-a5ba-b7472c3e3d0c)
+![image](https://github.com/user-attachments/assets/892cef6c-d2da-4c58-9859-38d9e8ba3b03)
+
 
 ## 프로젝트 구조
 
