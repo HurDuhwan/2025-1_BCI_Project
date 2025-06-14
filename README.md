@@ -74,12 +74,16 @@ The system is evaluated on the BCI Competition IV 2a dataset.
 - **Preprocessing pipeline**:
   - Band-pass filtering (8–32 Hz) using a 4th-order Butterworth filter
 
-> Download the official dataset from the [BCI Competition IV website](http://www.bbci.de/competition/iv/) and place it under the `Datasets/` directory.
+## Data Preparation
+
+> Download the custom preprocessed dataset from the following link:
+> [BCI Competition IV 2a Custom Dataset](https://drive.google.com/file/d/1PnQl0SMiXcv_U822QnAogoJPlOZ8YYA4/view?usp=drive_link)
+> 
+> Place the downloaded dataset under the `Datasets/` directory.
 
 The directory structure should look like this:
 
-```
-datasets/
+```datasets/
 ├── A01T.mat
 ├── A01E.mat
 ├── A02T.mat
@@ -119,3 +123,4 @@ This project is licensed under the MIT License. See the [LICENSE](./LICENSE) fil
 ## Contact
 
 For questions or collaborations, please open an issue or contact [HurDuhwan](https://github.com/HurDuhwan). 
+
