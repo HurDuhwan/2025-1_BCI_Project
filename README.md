@@ -117,14 +117,6 @@ CUDA_VISIBLE_DEVICES=0 python main.py
 
 ---
 
-## Citation
-
-If you use this code or find it helpful, please cite the original paper:
-
-> **Improved Domain Adaptation Network Based on Wasserstein Distance for Motor Imagery EEG Classification**  
-> [Add full citation here]
-
----
 
 ## License
 
