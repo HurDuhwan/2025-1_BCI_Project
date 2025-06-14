@@ -3,9 +3,12 @@
 
 이 프로젝트는 뇌-컴퓨터 인터페이스(BCI) 데이터를 위한 도메인 적응 분류기를 구현한 것입니다. WGAN(Wasserstein GAN)과 도메인 적응을 결합하여 모터 이미지(Motor Imagery) 분류를 수행합니다.
 
-## 프로젝트 흐름도
+## Overview
 
-![image](https://github.com/user-attachments/assets/892cef6c-d2da-4c58-9859-38d9e8ba3b03)
+![Workflow Diagram]![image](https://github.com/user-attachments/assets/892cef6c-d2da-4c58-9859-38d9e8ba3b03)
+<!-- Replace with your actual image path or use a Mermaid diagram if preferred -->
+
+This project implements a deep learning model that leverages domain adaptation with Wasserstein distance for robust motor imagery EEG classification. The model is designed to extract domain-invariant features from EEG signals and improve classification performance, especially in cross-subject scenarios. The architecture is evaluated on the BCI Competition IV 2a dataset.
 
 
 ## 프로젝트 구조
