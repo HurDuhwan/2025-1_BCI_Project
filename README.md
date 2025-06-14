@@ -71,10 +71,8 @@ The system is evaluated on the BCI Competition IV 2a dataset.
 - **Dataset**: BCI Competition IV Dataset 2a (9 subjects, 4 motor imagery classes: left hand, right hand, feet, tongue)
 - **Sampling rate**: 250 Hz  
 - **Channels used**: 22 EEG channels (EOG channels excluded)  
-- **Trial window**: 2s to 6s within each 7.5s trial  
 - **Preprocessing pipeline**:
   - Band-pass filtering (8–32 Hz) using a 4th-order Butterworth filter
-  - Exponential moving standardization (for improving SNR)
 
 > Download the official dataset from the [BCI Competition IV website](http://www.bbci.de/competition/iv/) and place it under the `Datasets/` directory.
 
@@ -86,17 +84,13 @@ After preprocessing, each subject’s data is stored in its own folder. Each fol
 The directory structure should look like this:
 
 ```
-Datasets/
-├── A01/
-│ ├── training.mat
-│ └── evaluation.mat
-├── A02/
-│ ├── training.mat
-│ └── evaluation.mat
+datasets/
+├── A01T.mat
+├── A01E.mat
+├── A02T.mat
+├── A02E.mat
 ...
-└── A09/
-├── training.mat
-└── evaluation.mat
+└── A09E.mat
 ```
 
 > ⚠️ **Note**: This repository does **not** include scripts to convert raw `.gdf` or `.edf` files.  
