@@ -1,4 +1,5 @@
-# BCI 프로젝트: WGAN-MI 분류기
+# Improved Domain Adaptation Network Based on Wasserstein Distance for Motor Imagery EEG Classification
+
 
 이 프로젝트는 뇌-컴퓨터 인터페이스(BCI) 데이터를 위한 도메인 적응 분류기를 구현한 것입니다. WGAN(Wasserstein GAN)과 도메인 적응을 결합하여 모터 이미지(Motor Imagery) 분류를 수행합니다.
 
@@ -29,76 +30,74 @@
 - 교차 검증을 통한 성능 평가
 - 자동화된 실험 결과 기록
 
-## 설치 방법
+## Installation
 
-1. 저장소 클론:
+1. **Clone the Repository**
+    ```bash
+    git clone https://github.com/HurDuhwan/2025-1_BCI_Project.git
+    cd 2025-1_BCI_Project
+    ```
+
+2. **(Optional) Pull Docker Image**
+    ```bash
+    docker pull pytorch/pytorch:1.13.1-cuda11.6-cudnn8-devel
+    ```
+
+3. **(Optional) Run Docker Container**
+    ```bash
+    docker run -it --rm --gpus all \
+      -v "$(pwd)":/workspace -w /workspace \
+      pytorch/pytorch:1.13.1-cuda11.6-cudnn8-devel /bin/bash
+    ```
+
+4. **Install Python Requirements**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+---
+
+## Data Preparation
+
+- Download the BCI Competition IV 2a dataset and place it in the `Datasets/` directory.
+- If you have preprocessed or converted data, place it in the same directory as required by the code.
+
+---
+
+## Train
+
+To train the model, run:
 ```bash
-git clone https://github.com/[your-username]/bci-wgan-mi.git
-cd bci-wgan-mi
+CUDA_VISIBLE_DEVICES=0 python main.py
 ```
+- You can specify the GPU number by changing the value after `CUDA_VISIBLE_DEVICES=`.
+- Hyperparameters can be modified directly in `main.py` or in the relevant config files.
 
-2. 필요한 패키지 설치:
-```bash
-pip install -r requirements.txt
-```
+---
 
-3. 데이터셋 준비:
-- BCI Competition IV Dataset 2a를 `Datasets/` 디렉토리에 위치시킵니다.
+## Evaluation
 
-## 사용 방법
+- Training and evaluation logs will be saved in the `results/` directory.
+- The best and average accuracy for each subject will be recorded in `results/sub_result.txt`.
+- You can review per-subject logs in `results/log_subject{n}.txt`.
 
-1. 모델 학습 및 평가:
-```bash
-python main.py
-```
+---
 
-2. 결과 확인:
-- 실험 결과는 `results/` 디렉토리에 저장됩니다.
-- 각 피험자별 결과는 `results/log_subject{번호}.txt`에 기록됩니다.
-- 전체 결과 요약은 `results/sub_result.txt`에서 확인할 수 있습니다.
+## Citation
 
-## 모델 아키텍처
+If you use this code or find it helpful, please cite the original paper:
 
-### 특징 추출기 (Feature Extractor)
-- CNN 기반 특징 추출
-- 입력: 22채널 EEG 데이터
-- 출력: 64차원 특징 벡터
+> **Improved Domain Adaptation Network Based on Wasserstein Distance for Motor Imagery EEG Classification**  
+> [Add full citation here]
 
-### 분류기 (Classifier)
-- 추출된 특징을 기반으로 클래스 분류
-- 4개 클래스 분류 (모터 이미지)
-- Softmax 활성화 함수 사용
+---
 
-### 도메인 판별기 (Domain Discriminator)
-- 소스와 타겟 도메인 구분
-- Wasserstein 거리 기반 학습
-- 그래디언트 패널티 적용
+## License
 
-## 하이퍼파라미터
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
 
-- 배치 크기: 32
-- 에포크 수: 200
-- 학습률: 0.0005
-- 특징 차원: 64
-- 입력 채널: 22
-- Adam 옵티마이저 (β1=0.5, β2=0.999)
+---
 
-## 요구사항
+## Contact
 
-- Python 3.6+
-- PyTorch >= 1.7.0
-- NumPy >= 1.19.2
-- SciPy >= 1.6.0
-- 기타 requirements.txt에 명시된 패키지들
-
-## 라이선스
-
-이 프로젝트는 MIT 라이선스 하에 배포됩니다. 자세한 내용은 LICENSE 파일을 참조하세요.
-
-## 기여 방법
-
-1. 이 저장소를 포크합니다.
-2. 새로운 브랜치를 생성합니다 (`git checkout -b feature/amazing-feature`).
-3. 변경사항을 커밋합니다 (`git commit -m 'Add some amazing feature'`).
-4. 브랜치에 푸시합니다 (`git push origin feature/amazing-feature`).
-5. Pull Request를 생성합니다. 
+For questions or collaborations, please open an issue or contact [HurDuhwan](https://github.com/HurDuhwan). 
