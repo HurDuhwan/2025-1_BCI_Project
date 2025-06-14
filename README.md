@@ -85,6 +85,7 @@ After preprocessing, each subject’s data is stored in its own folder. Each fol
 
 The directory structure should look like this:
 
+```
 Datasets/
 ├── A01/
 │ ├── training.mat
@@ -96,7 +97,7 @@ Datasets/
 └── A09/
 ├── training.mat
 └── evaluation.mat
-
+```
 
 > ⚠️ **Note**: This repository does **not** include scripts to convert raw `.gdf` or `.edf` files.  
 > You must manually preprocess the raw EEG data using tools such as **MNE-Python** or **MATLAB**, including filtering, epoching, and normalization.
