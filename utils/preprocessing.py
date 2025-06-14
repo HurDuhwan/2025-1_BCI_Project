@@ -3,18 +3,22 @@ import numpy as np
 import scipy.io as sio
 from scipy.signal import butter, filtfilt
 import mne
-
 def process_session(data_path: str, label_path: str, dataset: str = "2a", fs: int = 250):
-
     raw = mne.io.read_raw_gdf(data_path, preload=True, verbose=False)
-    if dataset == "2b":
+    if dataset == "2a":
+        target_eeg_names = [
+            'EEG-Fz', 'EEG-0', 'EEG-1', 'EEG-2', 'EEG-3', 'EEG-4', 'EEG-5', 'EEG-C3', 'EEG-6',
+            'EEG-Cz', 'EEG-7', 'EEG-C4', 'EEG-8', 'EEG-9', 'EEG-10', 'EEG-11', 'EEG-12',
+            'EEG-13', 'EEG-14', 'EEG-Pz', 'EEG-15', 'EEG-16'
+        ]
+        seg_offset = 2 * fs
+        seg_len = 4 * fs
+    elif dataset == "2b":
         target_eeg_names = ['EEG-C3', 'EEG-Cz', 'EEG-C4']
         seg_offset = 3 * fs
         seg_len = 4 * fs
-
     eeg_indices = [raw.ch_names.index(name) for name in target_eeg_names if name in raw.ch_names]
     data_full = raw.get_data(picks=eeg_indices)  # (ch, samples)
-
     if any(ch.startswith("STI") for ch in raw.ch_names):
         events = mne.find_events(raw, shortest_event=1, verbose=False)
     else:
@@ -24,7 +28,6 @@ def process_session(data_path: str, label_path: str, dataset: str = "2a", fs: in
     n_trial = len(pos)
     if n_trial == 0:
         raise RuntimeError(f"No trial events (768) found in {data_path}")
-
     if os.path.exists(label_path):
         lab = sio.loadmat(label_path)
         classlabel = lab.get("classlabel", np.zeros(n_trial)).squeeze()
@@ -35,7 +38,6 @@ def process_session(data_path: str, label_path: str, dataset: str = "2a", fs: in
         classlabel = classlabel[:min_len]
         pos = pos[:min_len]
         n_trial = min_len
-
     data = np.zeros((n_trial, len(target_eeg_names), seg_len))
     for k, p in enumerate(pos):
         start = p + seg_offset
@@ -43,15 +45,11 @@ def process_session(data_path: str, label_path: str, dataset: str = "2a", fs: in
         if end > data_full.shape[1]:
             raise ValueError(f"trial {k}: {end} > file len {data_full.shape[1]}")
         data[k] = data_full[:, start:end]
-
     data = np.nan_to_num(data)
-
     b, a = butter(4, [8 / (fs / 2), 32 / (fs / 2)], btype='bandpass')
     for k in range(n_trial):
         data[k] = filtfilt(b, a, data[k], axis=-1)
-
     return data, classlabel
-
 def convert_subject(subject_index, gdf_dir='./gdf', label_dir='./true_labels', out_dir='./mat', dataset="2a"):
     os.makedirs(out_dir, exist_ok=True)
     sess_list = ["T", "E"]
@@ -64,14 +62,12 @@ def convert_subject(subject_index, gdf_dir='./gdf', label_dir='./true_labels', o
         out_path = os.path.join(out_dir, f"A0{subject_index}{sess}.mat")
         sio.savemat(out_path, {"data": data, "label": label})
         print(f"Saved {out_path}  {data.shape}")
-
-
 if __name__ == "__main__":
     for sub in range(1, 10):
         try:
             convert_subject(sub, dataset="2a")
         except Exception as e:
-            print(f"[Subject {sub}] Error → {e}")
+            print(f"[Subject {sub}] Error -> {e}")
 
 
 
