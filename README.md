@@ -76,11 +76,6 @@ The system is evaluated on the BCI Competition IV 2a dataset.
 
 > Download the official dataset from the [BCI Competition IV website](http://www.bbci.de/competition/iv/) and place it under the `Datasets/` directory.
 
-After preprocessing, each subject’s data is stored in its own folder. Each folder contains:
-
-- `training.mat`: source domain data used for training  
-- `evaluation.mat`: target domain data used for evaluation
-
 The directory structure should look like this:
 
 ```
