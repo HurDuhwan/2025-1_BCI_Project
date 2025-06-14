@@ -4,7 +4,7 @@ This repository implements a domain adaptation classifier for EEG-based Brain-Co
 
 ## Overview
 
-![image](https://github.com/user-attachments/assets/892cef6c-d2da-4c58-9859-38d9e8ba3b03)
+![Workflow Diagram](./Figure/Framework.png)
 
 This project is based on a deep learning architecture that tackles the challenges of EEG classification, such as low SNR and non-stationarity, by applying a domain adaptation framework using Wasserstein Distance. The model extracts domain-invariant features from source and target EEG signals, enabling robust cross-subject MI classification.
 Source/target features are processed jointly via a feature extractor and then passed through both a domain discriminator and classifier.
