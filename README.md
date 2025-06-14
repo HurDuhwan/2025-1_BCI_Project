@@ -1,6 +1,12 @@
 # Improved Domain Adaptation Network Based on Wasserstein Distance for Motor Imagery EEG Classification
 
-This repository implements a domain adaptation classifier for EEG-based Brain-Computer Interface (BCI) systems. The model integrates Wasserstein GAN (WGAN) and adversarial training to improve classification performance in motor imagery (MI) tasks, particularly in cross-subject scenarios.
+**IEEE Transactions on Neural Systems and Rehabilitation Engineering, Vol. 31, 2023**  
+[📄 Paper Link](https://ieeexplore.ieee.org/document/10035017)
+
+This repository implements a domain adaptation classifier for EEG-based Brain-Computer Interface (BCI) systems.  
+The model integrates Wasserstein GAN (WGAN) and adversarial training to improve classification performance in motor imagery (MI) tasks, particularly in cross-subject scenarios.
+
+---
 
 ## Overview
 
