@@ -4,19 +4,7 @@
 
 ## 프로젝트 흐름도
 
-```mermaid
-graph TD
-    A[BCI 데이터셋] --> B[데이터 전처리]
-    B --> C[특징 추출기]
-    C --> D[도메인 적응]
-    C --> E[분류기]
-    D --> F[도메인 판별기]
-    F --> G[WGAN 학습]
-    E --> H[분류 결과]
-    G --> I[도메인 불변 특징]
-    I --> E
-    H --> J[성능 평가]
-```
+![image](https://github.com/user-attachments/assets/2697bfbb-630b-4e5d-a5ba-b7472c3e3d0c)
 
 ## 프로젝트 구조
 
