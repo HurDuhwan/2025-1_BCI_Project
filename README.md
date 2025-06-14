@@ -1,37 +1,37 @@
 # Improved Domain Adaptation Network Based on Wasserstein Distance for Motor Imagery EEG Classification
 
-
-이 프로젝트는 뇌-컴퓨터 인터페이스(BCI) 데이터를 위한 도메인 적응 분류기를 구현한 것입니다. WGAN(Wasserstein GAN)과 도메인 적응을 결합하여 모터 이미지(Motor Imagery) 분류를 수행합니다.
+This repository implements a domain adaptation classifier for EEG-based Brain-Computer Interface (BCI) systems. The model integrates Wasserstein GAN (WGAN) and adversarial training to improve classification performance in motor imagery (MI) tasks, particularly in cross-subject scenarios.
 
 ## Overview
 
-![Workflow Diagram]![image](https://github.com/user-attachments/assets/892cef6c-d2da-4c58-9859-38d9e8ba3b03)
-<!-- Replace with your actual image path or use a Mermaid diagram if preferred -->
+![image](https://github.com/user-attachments/assets/892cef6c-d2da-4c58-9859-38d9e8ba3b03)
 
-This project implements a deep learning model that leverages domain adaptation with Wasserstein distance for robust motor imagery EEG classification. The model is designed to extract domain-invariant features from EEG signals and improve classification performance, especially in cross-subject scenarios. The architecture is evaluated on the BCI Competition IV 2a dataset.
+This project is based on a deep learning architecture that tackles the challenges of EEG classification, such as low SNR and non-stationarity, by applying a domain adaptation framework using Wasserstein Distance. The model extracts domain-invariant features from source and target EEG signals, enabling robust cross-subject MI classification.
+Source/target features are processed jointly via a feature extractor and then passed through both a domain discriminator and classifier.
+Wasserstein-based adversarial training helps align feature distributions across domains without requiring labels from the target domain.
+The system is evaluated on the BCI Competition IV 2a dataset.
 
 
-## 프로젝트 구조
+##  Project Structure
 
 ```
-.
-├── Datasets/          # BCI 데이터셋 저장 디렉토리
-├── models/           # 모델 아키텍처 정의
-│   ├── generator.py  # 특징 추출기와 분류기
-│   └── discriminator.py  # 도메인 판별기
-├── results/          # 실험 결과 저장
-├── utils/           # 유틸리티 함수
-├── main.py          # 메인 실행 파일
-├── requirements.txt  # 의존성 패키지 목록
-└── README.md        # 프로젝트 문서
+├── Datasets/           # Contains BCI Competition IV 2a dataset
+├── models/             # Model definitions
+│   ├── generator.py        # Feature extractor + classifier
+│   └── discriminator.py    # Domain discriminator (WGAN)
+├── utils/              # Utility functions (filtering, logging, etc.)
+├── results/            # Experiment results and logs
+├── main.py             # Main training script
+├── requirements.txt    # Python dependencies
+└── README.md           # Project documentation
 ```
 
-## 주요 기능
+## Features
 
-- WGAN 기반 도메인 적응 학습
-- 모터 이미지 분류 (4개 클래스)
-- 교차 검증을 통한 성능 평가
-- 자동화된 실험 결과 기록
+- Domain adaptation using Wasserstein GAN
+- 4-class motor imagery classification
+- Leave-One-Subject-Out cross-validation
+- Per-subject logs and auto result saving
 
 ## Installation
 
