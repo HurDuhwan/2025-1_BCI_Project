@@ -1,16 +1,9 @@
 import torch
 import numpy as np
 import scipy.io
-from torch.utils.data import DataLoader, TensorDataset
-import time
-import datetime
-import random
 import torch.nn as nn
-from torch.autograd import grad
-from torch import Tensor
 import os
-from scipy.signal import butter, lfilter
-from utils.util import init_seed, compute_gradient_penalty, butter_bandpass_filter
+from utils.util import init_seed, compute_gradient_penalty
 from models.generator import FeatureExtractor
 from models.generator import Classifier
 from models.discriminator import DomainDiscriminator
@@ -201,7 +194,7 @@ class WGAN_MI_Classifier():
 def main():
 
     result_write = open("./results/sub_result.txt", "w")
-    seed = np.random.randint(2025)
+    seed = 2025
     init_seed(seed)
     best = 0
     average = 0

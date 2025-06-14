@@ -71,4 +71,7 @@ if __name__ == "__main__":
         try:
             convert_subject(sub, dataset="2a")
         except Exception as e:
-            print(f"[Subject {sub}] 변환 실패 → {e}")
+            print(f"[Subject {sub}] Error → {e}")
+
+
+
