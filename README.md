@@ -88,9 +88,6 @@ datasets/
 └── A09E.mat
 ```
 
-> ⚠️ **Note**: This repository does **not** include scripts to convert raw `.gdf` or `.edf` files.  
-> You must manually preprocess the raw EEG data using tools such as **MNE-Python** or **MATLAB**, including filtering, epoching, and normalization.
-
 ---
 
 ## Train
